@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+console.log("API URL =", API_URL);
 
 // Helper to format file sizes
 const formatBytes = (bytes, decimals = 2) => {
@@ -92,7 +93,7 @@ export default function App() {
   // Validate file depending on activeTab
   const validateAndUploadFile = (selectedFile) => {
     const fileType = selectedFile.type;
-    
+
     // Check basic types based on active tab
     if (activeTab === "image" && !fileType.startsWith("image/")) {
       setProcessError("Please drop or select an image file.");
@@ -243,7 +244,7 @@ export default function App() {
   // Download logic
   const handleDownload = () => {
     if (!processResult || !processResult.download_id) return;
-    
+
     // Open download link in browser
     window.location.href = `${API_URL}/api/download/${processResult.download_id}`;
   };
@@ -301,7 +302,7 @@ export default function App() {
             </svg>
             Image Compressor
           </button>
-          
+
           <button
             className={`tab-btn ${activeTab === "video" ? "active" : ""}`}
             onClick={() => {
@@ -316,7 +317,7 @@ export default function App() {
             </svg>
             Video Optimizer
           </button>
-          
+
           <button
             className={`tab-btn ${activeTab === "audio" ? "active" : ""}`}
             onClick={() => {
@@ -376,8 +377,8 @@ export default function App() {
                   activeTab === "image"
                     ? "image/*"
                     : activeTab === "video"
-                    ? "video/*"
-                    : "audio/*,.mp3,.wav,.m4a"
+                      ? "video/*"
+                      : "audio/*,.mp3,.wav,.m4a"
                 }
               />
             </div>
@@ -493,7 +494,7 @@ export default function App() {
                   <>
                     <div className="config-card">
                       <div className="config-title">
-                        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/></svg>
+                        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18" /><line x1="7" y1="2" x2="7" y2="22" /><line x1="17" y1="2" x2="17" y2="22" /><line x1="2" y1="12" x2="22" y2="12" /><line x1="2" y1="7" x2="7" y2="7" /><line x1="2" y1="17" x2="7" y2="17" /><line x1="17" y1="17" x2="22" y2="17" /><line x1="17" y1="7" x2="22" y2="7" /></svg>
                         H.264 Encoder Compression
                       </div>
                       <div className="form-group">
