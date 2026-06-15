@@ -3,7 +3,7 @@ from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
     # Comma-separated list of allowed CORS origins
-    ALLOWED_ORIGINS: str = "http://localhost:5173,http://localhost:3000"
+    ALLOWED_ORIGINS: str = "http://localhost:5173,https://f-ffmpeg-toolkit.vercel.app"
     
     # Path where temporary uploaded and processed files will be stored
     # Located inside the backend project directory to conform to workspace rules
